@@ -3,6 +3,7 @@
 import socket
 import sys
 import json
+from server.DB import DB
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -15,6 +16,9 @@ sock.bind(server_address)
 # Listen for incoming connections
 sock.listen(1)
 
+# создаем экземпляр Db
+db = DB();
+
 while True:
     # Wait for a connection
     print('waiting for a connection')
@@ -26,11 +30,14 @@ while True:
         while True:
             data = connection.recv(200)
 
-            print('received {!r}'.format(data))
+            # db.parse(data)
+            # print('received {!r}'.format(data))
             if data:
                 print('sending data back to the client')
+                my_json = data.decode('utf8').replace("'", '"')
+
                 data = json.loads(data.decode("utf-8"))  # назад в json
-                print(data);
+                db.parse(data)
                 data = json.dumps(data, ensure_ascii=False).encode("utf-8")  # кодирует json в байтовый вид
                 connection.sendall(data)  # отправляем назад
 
