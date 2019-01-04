@@ -2,6 +2,7 @@
 
 import socket
 import sys
+import json
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -23,11 +24,11 @@ while True:
 
         # Receive the data in small chunks and retransmit it
         while True:
-            data = connection.recv(16)
+            data = connection.recv(200)
             print('received {!r}'.format(data))
             if data:
                 print('sending data back to the client')
-                connection.sendall(data)
+                connection.sendall(data)  # resived data
             else:
                 print('no data from', client_address)
                 break

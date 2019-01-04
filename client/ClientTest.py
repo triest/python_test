@@ -2,6 +2,14 @@
 
 import socket
 import sys
+import json
+
+exampleData = {'method': 'deposit',
+               'date': '2018-10-09',
+               'account': 'bob',
+               'amt': 10,
+               'ccy': 'EUR'}
+
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -14,7 +22,10 @@ sock.connect(server_address)
 try:
 
     # Send data
-    message = b'This is the message.  It will be repeated.'
+    message = b'This is the message.  It will be repeated. New';
+    raw_data = json.dumps(exampleData, ensure_ascii=False).encode("utf-8")  # кодирует json в байтовый вид
+    message = raw_data
+
     print('sending {!r}'.format(message))
     sock.sendall(message)
 
@@ -23,7 +34,7 @@ try:
     amount_expected = len(message)
 
     while amount_received < amount_expected:
-        data = sock.recv(16)
+        data = sock.recv(200)  #new light 200
         amount_received += len(data)
         print('received {!r}'.format(data))
 
