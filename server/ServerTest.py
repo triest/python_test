@@ -25,10 +25,15 @@ while True:
         # Receive the data in small chunks and retransmit it
         while True:
             data = connection.recv(200)
+
             print('received {!r}'.format(data))
             if data:
                 print('sending data back to the client')
-                connection.sendall(data)  # resived data
+                data = json.loads(data.decode("utf-8"))  # назад в json
+                print(data);
+                data = json.dumps(data, ensure_ascii=False).encode("utf-8")  # кодирует json в байтовый вид
+                connection.sendall(data)  # отправляем назад
+
             else:
                 print('no data from', client_address)
                 break
