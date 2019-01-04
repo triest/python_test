@@ -52,5 +52,5 @@ class DB:
     # parse json for insert in DB
     def parse(self, data):
         print("in parse:")
-        print(data)
-       
+        self.insert(data['method'], data['date'], data['account'], data['amt'], data['ccy'])
+  
