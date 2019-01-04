@@ -1,5 +1,6 @@
 from server.DB import DB
 
 db = DB();
-db.conect();
+# db.conect();
 db.test()
+db.insert()
