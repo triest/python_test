@@ -65,12 +65,16 @@ class DB:
         try:
             with connection.cursor() as cursor:
                 # get tracsactions for last 3 days
-                sql = "SELECT * FROM `transfers` WHERE `create_at` BETWEEN CURRENT_TIMESTAMP - INTERVAL '3' DAY AND CURRENT_TIMESTAMP"  # получили транзакции за последние 3 дня
+                sql = "SELECT * FROM `transfers` WHERE `create_at` BETWEEN CURRENT_TIMESTAMP - INTERVAL '3' DAY AND CURRENT_TIMESTAMP"
                 cursor.execute(sql)
-                for row in cursor:
+                result = cursor.fetchall()
+                # для всех строчек перевоим в евро
+                conut = 1;
+                for row in result:
                     print(row)
+                    print(row["id"])
         except Exception:
-            print("Insert Error:")
+            print("Error in summ")
         finally:
             # Close connection.
             connection.close()
