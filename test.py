@@ -7,4 +7,4 @@ db = DB();
 
 # euro=db.convert(77.679,'RUB')
 # print(euro)
-db.calcSumInEuro()
+db.calcSumInEuro('bob')

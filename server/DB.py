@@ -8,7 +8,6 @@ import requests
 class DB:
     cursor = ""
 
-
     def conect(self):
         db = pymysql.connect("localhost", "root", "", "python")
         cur = db.cursor()
@@ -59,20 +58,18 @@ class DB:
         return euro
 
     # check history operation and summ in euro prom last 3 dats
-    def calcSumInEuro(self):
+    def calcSumInEuro(self, account):
         connection = pymysql.connect("localhost", "root", "", "python", charset='utf8mb4',
                                      cursorclass=pymysql.cursors.DictCursor)
         try:
             with connection.cursor() as cursor:
                 # get tracsactions for last 3 days
-                sql = "SELECT * FROM `transfers` WHERE `create_at` BETWEEN CURRENT_TIMESTAMP - INTERVAL '3' DAY AND CURRENT_TIMESTAMP"
-                cursor.execute(sql)
+                sql = "SELECT * FROM `transfers` WHERE account=%s and `create_at` BETWEEN CURRENT_TIMESTAMP - INTERVAL '5' DAY AND CURRENT_TIMESTAMP"
+                print(account)
+                cursor.execute(sql, (account))
                 result = cursor.fetchall()
-                # для всех строчек перевоим в евро
-                conut = 1;
                 for row in result:
                     print(row)
-                    print(row["id"])
         except Exception:
             print("Error in summ")
         finally:
@@ -84,3 +81,6 @@ class DB:
             # SELECT * FROM `transfers` WHERE create_at
             #      BETWEEN CURRENT_TIMESTAMP - INTERVAL '3' DAY
             #           AND CURRENT_TIMESTAMP
+
+# select by account
+# SELECT * FROM `transfers` WHERE account='bob' and `create_at` BETWEEN CURRENT_TIMESTAMP - INTERVAL '5' DAY AND CURRENT_TIMESTAMP
