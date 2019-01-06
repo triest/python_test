@@ -51,32 +51,45 @@ class DB:
 
     # get course from API and convert to EURO, return EURO
     def convert(self, ammount, ccy):  # ссн - валюта для перевода
-        r = requests.get(url='https://api.exchangeratesapi.io/latest?symbols=' + ccy)
-        r = r.json()
-        rates = r['rates'][ccy]
-        euro = ammount / rates
+        try:
+            r = requests.get(url='https://api.exchangeratesapi.io/latest?symbols=' + ccy)
+            r = r.json()
+            rates = r['rates'][ccy]
+            euro = ammount / rates
+        except Exception:
+            print("error in convert API")
         return euro
 
     # check history operation and summ in euro prom last 3 dats
     def calcSumInEuro(self, account):
-        connection = pymysql.connect("localhost", "root", "", "python", charset='utf8mb4',
-                                     cursorclass=pymysql.cursors.DictCursor)
+
+        sum = 0
         try:
+            connection = pymysql.connect("localhost", "root", "", "python", charset='utf8mb4',
+                                         cursorclass=pymysql.cursors.DictCursor)
             with connection.cursor() as cursor:
                 # get tracsactions for last 3 days
                 sql = "SELECT * FROM `transfers` WHERE account=%s and `create_at` BETWEEN CURRENT_TIMESTAMP - INTERVAL '5' DAY AND CURRENT_TIMESTAMP"
-                print(account)
                 cursor.execute(sql, (account))
                 result = cursor.fetchall()
+                # result = cursor.fetchall()
+                # print(result)
+                # um transtation in euro
+                count = 0
                 for row in result:
                     print(row)
+                    amt = row['amt']
+                    ccy = row['ccy']
+                    if (ccy == "EUR"):
+                        sum += amt
+                    else:
+                        sum += self.convert(amt, ccy)
+
+
         except Exception:
             print("Error in summ")
-        finally:
-            # Close connection.
-            connection.close()
 
-
+        return sum
 
             # SELECT * FROM `transfers` WHERE create_at
             #      BETWEEN CURRENT_TIMESTAMP - INTERVAL '3' DAY

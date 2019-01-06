@@ -7,4 +7,7 @@ db = DB();
 
 # euro=db.convert(77.679,'RUB')
 # print(euro)
-db.calcSumInEuro('bob')
+sum = db.calcSumInEuro('bob')
+
+print("sum for last 3 days for account ")
+print(sum)
