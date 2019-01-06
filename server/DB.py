@@ -52,16 +52,26 @@ class DB:
     # get course from API and convert to EURO, return EURO
     def convert(self, ammount, ccy):  # ссн - валюта для перевода
         try:
-            r = requests.get(url='https://api.exchangeratesapi.io/latest?symbols=' + ccy)
+            if ammount == None or ammount < 0:  # chect ammount
+                return None
+            str = 'https://api.exchangeratesapi.io/latest?symbols=' + ccy
+            print(str)
+            r = requests.get(url=str)
             r = r.json()
             rates = r['rates'][ccy]
-            euro = ammount / rates
+            if rates != None and rates > 0:
+                euro = ammount / rates
+            else:
+                return None
+            return euro
         except Exception:
             print("error in convert API")
-        return euro
+        return None
 
-    # check history operation and summ in euro prom last 3 dats
-    def calcSumInEuro(self, account):
+    # check history operation and summ in euro prom last
+    # input: bank account, valute for calculate, number od last days
+    #
+    def calcSumInEuro(self, account, calcCCy, forDays):
 
         sum = 0
         try:
@@ -69,31 +79,22 @@ class DB:
                                          cursorclass=pymysql.cursors.DictCursor)
             with connection.cursor() as cursor:
                 # get tracsactions for last 3 days
-                sql = "SELECT * FROM `transfers` WHERE account=%s and `create_at` BETWEEN CURRENT_TIMESTAMP - INTERVAL '5' DAY AND CURRENT_TIMESTAMP"
-                cursor.execute(sql, (account))
+                sql = "SELECT * FROM `transfers` WHERE account=%s and `create_at` BETWEEN CURRENT_TIMESTAMP - INTERVAL %s DAY AND CURRENT_TIMESTAMP"
+                cursor.execute(sql, (account, forDays))
                 result = cursor.fetchall()
-                # result = cursor.fetchall()
-                # print(result)
-                # um transtation in euro
                 count = 0
                 for row in result:
-                    print(row)
                     amt = row['amt']
                     ccy = row['ccy']
-                    if (ccy == "EUR"):
+                    print(ccy + ' ' + calcCCy)
+                    if (ccy == calcCCy):
                         sum += amt
                     else:
-                        sum += self.convert(amt, ccy)
+                        convert = self.convert(amt, ccy)
+                        if (convert != None):
+                            sum += convert
 
 
         except Exception:
             print("Error in summ")
-
         return sum
-
-            # SELECT * FROM `transfers` WHERE create_at
-            #      BETWEEN CURRENT_TIMESTAMP - INTERVAL '3' DAY
-            #           AND CURRENT_TIMESTAMP
-
-# select by account
-# SELECT * FROM `transfers` WHERE account='bob' and `create_at` BETWEEN CURRENT_TIMESTAMP - INTERVAL '5' DAY AND CURRENT_TIMESTAMP

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4ce77a57-4ad6-43ce-badf-902e759b1641" name="Default" comment="">
+    <list default="true" id="4ce77a57-4ad6-43ce-badf-902e759b1641" name="Default" comment="Select  last 3 days by account name">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/DB.py" afterPath="$PROJECT_DIR$/server/DB.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
@@ -16,7 +16,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/testAxmit$ClientTest.coverage" NAME="ClientTest Coverage Results" MODIFIED="1546634378860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/client" />
     <SUITE FILE_PATH="coverage/testAxmit$ServerTest.coverage" NAME="ServerTest Coverage Results" MODIFIED="1546676798240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
-    <SUITE FILE_PATH="coverage/testAxmit$test.coverage" NAME="test Coverage Results" MODIFIED="1546808135924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/testAxmit$test.coverage" NAME="test Coverage Results" MODIFIED="1546812355663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -55,8 +55,8 @@
       <file leaf-file-name="ServerTest.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/ServerTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="402">
+              <caret line="39" column="24" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="24" />
               <folding>
                 <element signature="e#25#38#0" expanded="true" />
               </folding>
@@ -67,8 +67,8 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state relative-caret-position="204">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -77,16 +77,16 @@
       <file leaf-file-name="DB.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/DB.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="89" column="34" lean-forward="true" selection-start-line="89" selection-start-column="34" selection-end-line="89" selection-end-column="34" />
+            <state relative-caret-position="379">
+              <caret line="86" column="16" lean-forward="false" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
-                <marker date="1546808133020" expanded="true" signature="579:604" ph="SELECT ` FRO... " />
-                <marker date="1546808133020" expanded="true" signature="1138:1229" ph="INSERT INTO `transfers`... " />
-                <marker date="1546808133020" expanded="true" signature="2603:2660" ph="SELECT * FRO... transfers" />
-                <marker date="1546808133020" expanded="true" signature="2603:2706" ph="SELECT * FRO... transfers" />
-                <marker date="1546808133020" expanded="true" signature="2603:2728" ph="SELECT * FRO... transfers" />
-                <marker date="1546808133020" expanded="true" signature="2603:2729" ph="INSERT INTO `transfers`... " />
+                <marker date="1546812807884" expanded="true" signature="579:604" ph="SELECT ` FRO... " />
+                <marker date="1546812807884" expanded="true" signature="1138:1229" ph="INSERT INTO `transfers`... " />
+                <marker date="1546812807884" expanded="true" signature="2930:2978" ph="SELECT * FRO... transfers" />
+                <marker date="1546812807884" expanded="true" signature="2930:3032" ph="SELECT * FRO... transfers" />
+                <marker date="1546812807884" expanded="true" signature="2930:3054" ph="SELECT * FRO... transfers" />
+                <marker date="1546812807884" expanded="true" signature="2930:3055" ph="INSERT INTO `transfers`... " />
               </folding>
             </state>
           </provider>
@@ -360,7 +360,14 @@
       <option name="project" value="LOCAL" />
       <updated>1546693955634</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Select  last 3 days by account name">
+      <created>1546808156710</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1546808156710</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -473,12 +480,12 @@
           <caret line="79" column="32" lean-forward="true" selection-start-line="79" selection-start-column="32" selection-end-line="79" selection-end-column="32" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <marker date="1546808133020" expanded="true" signature="579:604" ph="SELECT ` FRO... " />
-            <marker date="1546808133020" expanded="true" signature="1138:1229" ph="INSERT INTO `transfers`... " />
-            <marker date="1546808133020" expanded="true" signature="2603:2660" ph="SELECT * FRO... transfers" />
-            <marker date="1546808133020" expanded="true" signature="2603:2706" ph="SELECT * FRO... transfers" />
-            <marker date="1546808133020" expanded="true" signature="2603:2728" ph="SELECT * FRO... transfers" />
-            <marker date="1546808133020" expanded="true" signature="2603:2729" ph="INSERT INTO `transfers`... " />
+            <marker date="1546812807884" expanded="true" signature="579:604" ph="SELECT ` FRO... " />
+            <marker date="1546812807884" expanded="true" signature="1138:1229" ph="INSERT INTO `transfers`... " />
+            <marker date="1546812807884" expanded="true" signature="2930:2978" ph="SELECT * FRO... transfers" />
+            <marker date="1546812807884" expanded="true" signature="2930:3032" ph="SELECT * FRO... transfers" />
+            <marker date="1546812807884" expanded="true" signature="2930:3054" ph="SELECT * FRO... transfers" />
+            <marker date="1546812807884" expanded="true" signature="2930:3055" ph="INSERT INTO `transfers`... " />
           </folding>
         </state>
       </provider>
@@ -533,12 +540,12 @@
           <caret line="72" column="34" lean-forward="true" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <marker date="1546808133020" expanded="true" signature="579:604" ph="SELECT ` FRO... " />
-            <marker date="1546808133020" expanded="true" signature="1138:1229" ph="INSERT INTO `transfers`... " />
-            <marker date="1546808133020" expanded="true" signature="2603:2660" ph="SELECT * FRO... transfers" />
-            <marker date="1546808133020" expanded="true" signature="2603:2706" ph="SELECT * FRO... transfers" />
-            <marker date="1546808133020" expanded="true" signature="2603:2728" ph="SELECT * FRO... transfers" />
-            <marker date="1546808133020" expanded="true" signature="2603:2729" ph="INSERT INTO `transfers`... " />
+            <marker date="1546812807884" expanded="true" signature="579:604" ph="SELECT ` FRO... " />
+            <marker date="1546812807884" expanded="true" signature="1138:1229" ph="INSERT INTO `transfers`... " />
+            <marker date="1546812807884" expanded="true" signature="2930:2978" ph="SELECT * FRO... transfers" />
+            <marker date="1546812807884" expanded="true" signature="2930:3032" ph="SELECT * FRO... transfers" />
+            <marker date="1546812807884" expanded="true" signature="2930:3054" ph="SELECT * FRO... transfers" />
+            <marker date="1546812807884" expanded="true" signature="2930:3055" ph="INSERT INTO `transfers`... " />
           </folding>
         </state>
       </provider>
@@ -687,16 +694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/ServerTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="e#25#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../untitled2/1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -705,26 +702,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/ServerTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="39" column="24" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="24" />
+          <folding>
+            <element signature="e#25#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="204">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/DB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="89" column="34" lean-forward="true" selection-start-line="89" selection-start-column="34" selection-end-line="89" selection-end-column="34" />
+        <state relative-caret-position="379">
+          <caret line="86" column="16" lean-forward="false" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <marker date="1546808133020" expanded="true" signature="579:604" ph="SELECT ` FRO... " />
-            <marker date="1546808133020" expanded="true" signature="1138:1229" ph="INSERT INTO `transfers`... " />
-            <marker date="1546808133020" expanded="true" signature="2603:2660" ph="SELECT * FRO... transfers" />
-            <marker date="1546808133020" expanded="true" signature="2603:2706" ph="SELECT * FRO... transfers" />
-            <marker date="1546808133020" expanded="true" signature="2603:2728" ph="SELECT * FRO... transfers" />
-            <marker date="1546808133020" expanded="true" signature="2603:2729" ph="INSERT INTO `transfers`... " />
+            <marker date="1546812807884" expanded="true" signature="579:604" ph="SELECT ` FRO... " />
+            <marker date="1546812807884" expanded="true" signature="1138:1229" ph="INSERT INTO `transfers`... " />
+            <marker date="1546812807884" expanded="true" signature="2930:2978" ph="SELECT * FRO... transfers" />
+            <marker date="1546812807884" expanded="true" signature="2930:3032" ph="SELECT * FRO... transfers" />
+            <marker date="1546812807884" expanded="true" signature="2930:3054" ph="SELECT * FRO... transfers" />
+            <marker date="1546812807884" expanded="true" signature="2930:3055" ph="INSERT INTO `transfers`... " />
           </folding>
         </state>
       </provider>
