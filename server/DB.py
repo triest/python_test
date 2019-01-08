@@ -5,27 +5,20 @@ from django.core.serializers import json
 import requests
 
 
+# class DB
+#
+#
+
 class DB:
     cursor = ""
+    limit = 10000;
 
     def conect(self):
         db = pymysql.connect("localhost", "root", "", "python")
         cur = db.cursor()
         return cur
 
-    def test(self):
-        connection = pymysql.connect("localhost", "root", "", "python", charset='utf8mb4',
-                                     cursorclass=pymysql.cursors.DictCursor)
-        try:
 
-            with connection.cursor() as cursor:
-                # Read a single record
-                sql = "SELECT * FROM `transfers`"
-                cursor.execute(sql)
-                result = cursor.fetchone()
-                print(result)
-        finally:
-            connection.close()
 
     # insert data in databese
     def insert(self, method, date, account, amt, ccy):
@@ -47,7 +40,24 @@ class DB:
 
     # parse json for insert in DB
     def parse(self, data):
-        self.insert(data['method'], data['date'], data['account'], data['amt'], data['ccy'])
+        # chouse methor for operation
+        if data['method'] == 'deposit' or data['method'] == 'withdrawal':  # для метода deposit or withdrawal
+            if self.calcSumInEuro(data['account'], data['ccy'], data['amt']) < self.limit:
+                self.insert(data['method'], data['date'], data['account'], data['amt'], data['ccy'])
+                return True
+            else:
+                return False
+        elif data['method'] == 'transfer':
+            to_account = data['to_account']
+            from_account = data['from_account']
+            sumTo = self.calcSumInEuro(to_account, 'EUR', 5);
+            sumFrom = self.calcSumInEuro(from_account, 'EUR', 5);
+            if sumFrom < self.limit and sumTo < self.limit:
+                self.insert(data['method'], data['date'], to_account, data['amt'], data['ccy'])
+                self.insert(data['method'], data['date'], from_account, data['amt'], data['ccy'])
+                return True
+        elif data['method'] == 'get_balances':
+            return True
 
     # get course from API and convert to EURO, return EURO
     def convert(self, ammount, ccy):  # ссн - валюта для перевода
@@ -55,7 +65,6 @@ class DB:
             if ammount == None or ammount < 0:  # chect ammount
                 return None
             str = 'https://api.exchangeratesapi.io/latest?symbols=' + ccy
-            print(str)
             r = requests.get(url=str)
             r = r.json()
             rates = r['rates'][ccy]

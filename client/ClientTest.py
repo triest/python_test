@@ -10,6 +10,23 @@ exampleData = {'method': 'deposit',
                'amt': 10,
                'ccy': 'EUR'}
 
+exampleData2 = {'method': 'transfer',
+                'date': '2018-10-09',
+                'to_account': 'bob',
+                'from_account': 'alice',
+                'amt': 100,
+                'ccy': 'GBP'}
+
+exampleData3 = {'method': 'withdrawal',
+                'date': '2018-10-09',
+                'account': 'alice',
+                'amt': 10,
+                'ccy': 'EUR'}
+
+exampleData4 = {'method': 'get_balances',
+                'date': '2018-10-09',
+                'account': 'bob'}
+
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -22,7 +39,7 @@ try:
 
     # Send data
     message = b'This is the message.  It will be repeated. New';
-    message = json.dumps(exampleData, ensure_ascii=False).encode("utf-8")  # кодирует json в байтовый вид
+    message = json.dumps(exampleData4, ensure_ascii=False).encode("utf-8")  # кодирует json в байтовый вид
 
     print('sending {!r}'.format(message))
     sock.sendall(message)
